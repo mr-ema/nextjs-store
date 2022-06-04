@@ -1,0 +1,38 @@
+{
+  "name": "nextjs-store",
+  "version": "1.0.0",
+  "description": "testing nextjs with a manual stepUp and create a sotre",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "type-check": "tsc",
+    "lint": "next lint"
+  },
+  "keywords": [],
+  "author": "antonio lombardo (https://mr-ema.github.io/)",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.27.2",
+    "cookies-next": "^2.0.4",
+    "moment": "^2.29.3",
+    "mongoose": "^6.3.3",
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
+    "react-icons": "^4.3.1",
+    "sharp": "^0.30.5",
+    "styled-components": "^5.3.5",
+    "swr": "^1.3.0",
+    "transbank-sdk": "^3.0.2",
+    "yup": "^0.32.11"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.33",
+    "@types/react": "^18.0.9",
+    "@types/react-dom": "^18.0.4",
+    "@types/styled-components": "^5.1.25",
+    "typescript": "^4.6.4"
+  }
+}
