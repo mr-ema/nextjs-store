@@ -35,9 +35,9 @@ const handler = async ( req: NextApiRequest, res: NextApiResponse ) => {
       })
     }
 
-    res.status(200).json({ status: 'success' })
+    return res.status(200).json({ status: 'success' })
   }catch(err) {
-    res.status(400).json({ err: 'No Response' })
+    return res.status(400).json({ err: 'No Response' })
   }
 }
 

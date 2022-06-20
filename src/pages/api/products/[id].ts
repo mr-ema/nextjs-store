@@ -47,10 +47,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         if(products && products.length > 4) {
           await Product.findByIdAndRemove(id)
-        }else res.status(200).json({ status: 'DENIED' })
+        }else return res.status(200).json({ status: 'DENIED' })
       
       }catch(err) {
-        res.status(400).json({ status: 'Something go wrong' })
+        return res.status(400).json({ status: 'Something go wrong' })
       }
     },
   }

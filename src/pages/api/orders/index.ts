@@ -3,6 +3,7 @@ import { connectDB } from '../../../middleware/mongodb'
 import { Order } from '../../../models/order'
 import { IOrder } from '../../../types/order'
 import { ResponseFuncs } from '../../../types/types'
+import moment from 'moment'
 
 
 const handler = async ( req: NextApiRequest, res: NextApiResponse ) => {
@@ -16,10 +17,21 @@ const handler = async ( req: NextApiRequest, res: NextApiResponse ) => {
         await connectDB() // conect to database
         const items: IOrder[] | {} = await Order.find({}).exec()
         
-        res.json(items)
+        return res.json(items)
         
       }catch(err) {
         console.log(err)
+      }
+    },
+    DELETE: async (req: NextApiRequest, res: NextApiResponse) => {
+      const date = moment().subtract(2, 'days').toISOString()
+      
+      try {
+        await connectDB() // conect to database
+        const count = await Order.deleteMany({ status: 'Pending', createdAt: { $lt: date } })
+        return res.status(200).json(count)
+      }catch(err) {
+        return res.status(400).json({ status: 'error' })
       }
     }
   }

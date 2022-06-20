@@ -2,30 +2,17 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { connectDB } from '../../../middleware/mongodb'
 import { Order } from '../../../models/order'
 import { ResponseFuncs } from '../../../types/types'
-import moment from 'moment'
-
 
 const handler = async ( req: NextApiRequest, res: NextApiResponse ) => {
   // Capture request method, we type it as a key of ResponseFunc to reduce typing later
   const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
 
+  const id = req.query.id as string // Get element id
+  
   // Potential responses
   const handleCase: ResponseFuncs = {
-    GET: async (req: NextApiRequest, res: NextApiResponse) => {
-      const date = moment().subtract(2, 'days').toISOString()
-      
+    DELETE:  async (req: NextApiRequest, res: NextApiResponse) => {
       try {
-        await connectDB() // conect to database
-        const count = await Order.deleteMany({ status: 'Pending', createdAt: { $lt: date } })
-        res.status(200).json(count)
-      }catch(err) {
-        res.status(400).json({ status: 'error' })
-      }
-    },
-    POST:  async (req: NextApiRequest, res: NextApiResponse) => {
-      try {
-        const id = req.body._id || ''
-       
         await connectDB()
         await Order.deleteOne({ _id: id })
         res.status(200).json({ status: 'success' })

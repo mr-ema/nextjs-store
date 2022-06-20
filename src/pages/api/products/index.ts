@@ -16,10 +16,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         await connectDB() // conect to database
         const data = await Product.find({}).exec()
-        res.status(200).json(data)
+        return res.status(200).json(data)
       
       }catch(err) {
-        res.status(400).json({ message: 'Something go wrong' })
+        return res.status(400).json({ message: 'Something go wrong' })
       }
     },
     // RESPONSE FOR POST REQUESTS
@@ -30,12 +30,12 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
 
         if(products && products.length < 30) {
             await Product.create(req.body)
-            res.status(200).json({ mesagge: 'success' })
+            return res.status(200).json({ mesagge: 'success' })
 
           }else res.status(200).json({ message: 'DENIED' })
 
       }catch(err) {
-        res.status(400).json({ status: 'bad request' })
+        return res.status(400).json({ status: 'bad request' })
       }
     }
   }

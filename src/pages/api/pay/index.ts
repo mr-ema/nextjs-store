@@ -19,7 +19,7 @@ const handler = async ( req: NextApiRequest, res: NextApiResponse ) => {
 
   // Potential responses
   const handleCase: ResponseFuncs = {
-    POST: async (req: NextApiRequest, res: NextApiResponse) => {
+    PUT: async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         // Get data from cartContex(id and quantity) as an array.
         const cart = req.body
