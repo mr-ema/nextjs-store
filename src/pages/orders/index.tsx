@@ -16,7 +16,7 @@ export default function Orders() {
   async function handleDelete() {
     try {
       setDisabled(true)
-      const res = await axios.get('/api/orders/delete')
+      const res = await axios.delete('/api/orders')
       const count = res && res.data.deletedCount
       setDeleteCount(count)
       setDeleteMessage(count > 0 ? 'Wait Or Refresh' : 'Nothing To Delete')

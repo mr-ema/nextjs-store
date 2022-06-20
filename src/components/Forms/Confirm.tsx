@@ -19,7 +19,7 @@ export default function ConfirmPay({ total }) {
 
     async function getToken () {
       try {
-        const res = await axios.post('/api/pay', cart)
+        const res = await axios.put('/api/pay', cart)
         const data: PayProps = await res.data
     
         setResponse(data)

@@ -15,7 +15,7 @@ export default function Order({ data }: Data) {
     try {
       setDeleteOne('Wait Or Refresh')
       setDisabledOne(true)
-      const post = await axios.post('/api/orders/delete', { _id: arg })
+      await axios.delete(`/api/orders/${data._id}`)
     }catch(err) {
       setDeleteOne('No response from server')
     }

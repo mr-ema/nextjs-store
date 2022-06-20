@@ -25,7 +25,7 @@ export default function Card({ name, price, _id, remove = false }: IProps, ) {
       const res = await axios.delete(`/api/products/${_id}`)
       const message = res.data
       if (message.status === 'DENIED') {
-        alert('Must be at leat 4 elements to remove other.')
+        alert('Must be at least 5 elements to remove others.')
         setDisabled(false)
       }
     }catch(err) {
