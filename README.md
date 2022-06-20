@@ -2,12 +2,15 @@
 
 - This is my first e-commerce and NextJs project.
 
+## Important
+- You need to provide a mongodb URI in '.env | .env.local' with the name DATABASE_URL.
+
 ## In this store you can:
-- upload products without custom picture for the momen.
-- remove those products.
-- add-remove products from cart.
-- add order to database when complete delivery form.
-- when pay successful update order STATUS.
+- Upload products without custom picture for the momen.
+- Remove those products.
+- Add-remove products from cart.
+- Add order to database when complete delivery form.
+- When pay successful update order STATUS.
 
 ## Installation 
 - Clone the repository and run:
