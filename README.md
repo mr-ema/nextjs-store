@@ -20,7 +20,7 @@
 ```
 Development:
 ```bash
-    nmp run dev
+    npm run dev
 ```
 Production:
 ```bash
