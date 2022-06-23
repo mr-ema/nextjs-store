@@ -1,18 +1,24 @@
 # Basic NextJs Store
 
-- This is my first e-commerce and NextJs project.
+- This is a basic ecommerce site made in nextjs using webpay, mongoose and yum.
 
 ## Important
 - You need to provide a mongodb URI in '.env | .env.local' with the name DATABASE_URL.
+- Also you should use encryption in the localstorage for extra security.
 
-## In this store you can:
+## To Test Pay Method use:
+- Credit Cart: 4051885600446623
+- Rut: 11.111.111-1
+- Password: 123
+
+## In This Store You Can:
 - Upload products without custom picture for the momen.
 - Remove those products.
 - Add-remove products from cart.
 - Add order to database when complete delivery form.
 - When pay successful update order STATUS.
 
-## Installation 
+## Run Locally 
 - Clone the repository and run:
 
 ```bash
