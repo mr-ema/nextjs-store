@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from 'next'
 import { connectDB } from '../../../middleware/mongodb'
 import { Order } from '../../../models/order'
 import { ResponseFuncs } from '../../../types/types'
+import { IOrder } from '../../../types/order'
 
 const handler = async ( req: NextApiRequest, res: NextApiResponse ) => {
   // Capture request method, we type it as a key of ResponseFunc to reduce typing later
@@ -14,10 +15,16 @@ const handler = async ( req: NextApiRequest, res: NextApiResponse ) => {
     DELETE:  async (req: NextApiRequest, res: NextApiResponse) => {
       try {
         await connectDB()
-        await Order.deleteOne({ _id: id })
-        res.status(200).json({ status: 'success' })
+        const orders: IOrder[] = await Order.find({})
+
+        if (orders && orders.length > 2)  {
+          await Order.deleteOne({ _id: id })
+          return res.status(200).json({ status: 'success' })
+        }else {
+          return res.status(200).json({ status: 'DENIED' })
+        }
       }catch(err) {
-        res.status(400).json({ status: 'error' })
+        return res.status(400).json({ status: 'error' })
       }
     }
   }

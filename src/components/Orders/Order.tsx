@@ -15,7 +15,13 @@ export default function Order({ data }: Data) {
     try {
       setDeleteOne('Wait Or Refresh')
       setDisabledOne(true)
-      await axios.delete(`/api/orders/${data._id}`)
+      const res = await axios.delete(`/api/orders/${data._id}`)
+
+      const message = res.data
+      if (message.status === 'DENIED') {
+        alert('Must be at least 3 elements to remove others.')
+        setDeleteOne('Delete Order')
+      }
     }catch(err) {
       setDeleteOne('No response from server')
     }

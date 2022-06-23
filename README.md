@@ -6,7 +6,7 @@
 - You need to provide a mongodb URI in '.env | .env.local' with the name DATABASE_URL.
 - Also you should use encryption in the localstorage for extra security.
 
-## To Test Pay Method use:
+## To Test Pay Method Use:
 - Credit Cart: 4051885600446623
 - Rut: 11.111.111-1
 - Password: 123
