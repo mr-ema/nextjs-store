@@ -1,4 +1,5 @@
 import Image from 'next/image'
+import Head from 'next/head'
 import Link from 'next/link'
 import { useEffect, useState } from 'react'
 import styled from 'styled-components'
@@ -37,68 +38,78 @@ export default function Home(props: IProps) {
   )}
   
   return (
-    <Wrapper>
-      <Box>
-        <Banner>
-          <Image 
-            alt='banner'
-            src={banner}
-            layout='fill'
-            objectFit='cover'
-            quality={100}
-            priority={true}
-          />
-        </Banner>
-        <Info>
-          <ImageBox>
+    <>
+      <Head>
+        <meta name='title' content='NextJs Coffe Store' />
+        <meta name='description' content='This is a demo ecommerce site made with NextJs framework'/>
+        <meta name='keywords' content='Github,Next,Nextjs,Ecommerce,Coffe,React,Webpay,Mongodb'/>
+        <meta name='robots' content='index, nofollow'/>
+        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+        <meta name='language' content='English'/>
+      </Head>
+      <Wrapper>
+        <Box>
+          <Banner>
             <Image 
-              alt='logo'
-              src='/logo.png'
+              alt='banner'
+              src={banner}
               layout='fill'
               objectFit='cover'
               quality={100}
               priority={true}
             />
-          </ImageBox>
-          <h1>Best Coffee</h1>
-      
-          <BannerItem>
-            <div className='info'>
-              <div className='box'>
-                <span>{data[ramdom].name}</span>
-                <span>${data[ramdom].price}</span>
+          </Banner>
+          <Info>
+            <ImageBox>
+              <Image 
+                alt='logo'
+                src='/logo.png'
+                layout='fill'
+                objectFit='cover'
+                quality={100}
+                priority={true}
+              />
+            </ImageBox>
+            <h1>Best Coffee</h1>
+        
+            <BannerItem>
+              <div className='info'>
+                <div className='box'>
+                  <span>{data[ramdom].name}</span>
+                  <span>${data[ramdom].price}</span>
+                </div>
+
+                <h3>{data[ramdom].description || ''}</h3>
+                <Link href={'/products/' + data[ramdom]._id}>
+                <a>See More</a>
+                  </Link>
               </div>
+              <div>
+              <Image 
+                alt='item'
+                src={'/images/coffee.jpg'}
+                width={300}
+                height={300}
+                objectFit={'cover'}
+              />
+              </div>
+            </BannerItem>
+          </Info>
+        </Box>
 
-              <h3>{data[ramdom].description || ''}</h3>
-              <Link href={'/products/' + data[ramdom]._id}>
-              <a>See More</a>
-                </Link>
-            </div>
-            <div>
-            <Image 
-              alt='item'
-              src={'/images/coffee.jpg'}
-              width={300}
-              height={300}
-              objectFit={'cover'}
-            />
-            </div>
-          </BannerItem>
-        </Info>
-      </Box>
-
-      <Box>
-        <Products>
-          {data.map( (product: IProduct) => (
-          <Card 
-            key={product._id}
-            _id={product._id}
-            name={product.name} 
-            price={product.price}
-          />) )}
-        </Products>
-      </Box>
-    </Wrapper>
+        <Box>
+          <Products>
+            {data.map( (product: IProduct) => (
+            <Card 
+              key={product._id}
+              _id={product._id}
+              name={product.name} 
+              price={product.price}
+            />) )}
+          </Products>
+        </Box>
+      </Wrapper>
+    </>
   )
 }
 
