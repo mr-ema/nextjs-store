@@ -24,23 +24,28 @@ export default function Search() {
     const query = event.target.value
     const filter = products.filter(item => item.name.includes(query))
 
+    // Hide results when input is empty
+    if (!query) setActive(false)
+    else setActive(true)
+    // Check if exist results
     if(filter.length > 0 && !!query) setResult(filter)
     else return
   }
 
   return (
-    <SearchBox border={active && result.length > 0 ? true:false}>
+    <SearchBox>
       <SearchBar 
         placeholder='Search'
         type='search' 
         maxLength={24} 
         onChange={handleChange} 
         onFocus={() => setActive(true)}
-        onBlur={() => setTimeout(() => setActive(false), 200) }
+        // Without TimeOut The Results Vanish Before You Can Click The Link
+        onBlur={() => setTimeout(() => setActive(false), 100) }
       />
       <Results $visibility={active ? 'visible':'hidden'}>
-        {result && result.map(product => (
-        <Link href={`/products/${product._id}`}>
+        {result && result.map((product, idx) => (
+        <Link key={idx} href={`/products/${product._id}`} >
           <a>{product.name}</a>
         </Link>)
         )}
@@ -49,7 +54,7 @@ export default function Search() {
   )
 }
 
-const SearchBox = styled.div<{border: boolean}>`
+const SearchBox = styled.div`
   grid-column: 2/7;
   justify-self: center;
   align-items: flex-start;
@@ -61,7 +66,7 @@ const SearchBox = styled.div<{border: boolean}>`
   position: relative;
 
   width: 70%;
-  height: 35px;
+  height: 60px;
 
   @media screen and (max-width: 900px) {
     width: 80%;
@@ -69,14 +74,20 @@ const SearchBox = styled.div<{border: boolean}>`
 `
 
 const SearchBar = styled.input`
-  background: #ffffff16;
-  border-radius: .6rem;
+  background: #1b1b1bdc;
+  border-left: 3px solid #475698;
   color: #fff;
   font-weight: 600;
+  font-size: 1.1rem;
   padding: 0 .6rem;
+  text-transform: capitalize;
 
   width: 80%;
-  height: 35px;
+  height: 60px;
+
+  &:focus {
+    border-left: 3px solid #758fff;
+  }
 
   @media screen and ( max-width: 600px ) {
       font-size: .8rem;
@@ -86,15 +97,18 @@ const SearchBar = styled.input`
 
 const Results = styled.div<{$visibility: string}>`
   border-radius: 0 0 .3rem .3rem;
-  background-color: #000000;
+  background-color: #1b1b1bdc;
   display: flex;
+  font-size: 1.1rem;
+  font-weight: 600;
   flex-direction: column;
   align-items: flex-start;
   justify-content: flex-start;
   position: absolute;
   overflow-y: scroll;
   visibility: ${props => props.$visibility};
-  top: 35px;
+  text-transform: capitalize;
+  top: 60px;
   left: 0;
 
   width: 80%;
@@ -102,6 +116,7 @@ const Results = styled.div<{$visibility: string}>`
   z-index: 2;
 
   @media screen and ( max-width: 600px ) {
+      font-size: .8rem;
       top: 30px;
   }
 
@@ -109,7 +124,7 @@ const Results = styled.div<{$visibility: string}>`
     color: inherit;
     display: flex;
     font-weight: 600;
-    padding: .6rem;
+    padding: 1rem;
     text-align: start;
     text-decoration: none;
     width: 100%;

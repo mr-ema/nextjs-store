@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from 'next'
+import mongoose from 'mongoose'
 import { connectDB } from '../../../middleware/mongodb'
 import { Order } from '../../../models/order'
 import { ResponseFuncs } from '../../../types/types'
@@ -8,7 +9,17 @@ const handler = async ( req: NextApiRequest, res: NextApiResponse ) => {
   // Capture request method, we type it as a key of ResponseFunc to reduce typing later
   const method: keyof ResponseFuncs = req.method as keyof ResponseFuncs
 
-  const id = req.query.id as string // Get element id
+  let id: string;
+  
+  // CHECK IF REQ.QUERY.ID IS A VALID OBJECT_ID
+  if (mongoose.Types.ObjectId.isValid(req.query.id as string)) {
+    id = req.query.id as string // if vaild pass request query as _id
+  }else {
+    // if request is not a valid objectId use a fake _id with 12 numbers
+    // if not fake id is provided the server will stop
+    // with a castError
+    id = '111111111111' // fake mongo _id which bypass castError 
+  }
   
   // Potential responses
   const handleCase: ResponseFuncs = {
