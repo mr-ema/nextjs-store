@@ -1,14 +1,17 @@
 import { string, object, SchemaOf, number } from 'yup'
+import { IProduct } from '../product'
 
-interface Product {
-  name: string,
-  stock?: number,
-  price: number,
-  description: string
-}
+// ^ Start with: https://https://images.unsplash.com/photo
+// Allow [letters numbers and -?.&=]
+const URL = /^(https:\/\/images.unsplash.com\/photo){1}\b[a-zA-Z0-9-?=\.&]+/i
 
-export const productSquema: SchemaOf<Product> = object({
-  name: string().min(3).max(20).required(),
+export const productSquema: SchemaOf<IProduct> = object({
+  imgUrl: string().matches(URL, {message:'invalid url', excludeEmptyString:true}),
+  name: string().min(3).max(20)
+    .transform(function (value) {
+      return this.isType(value) && value !== null ? value.toLowerCase() : value;
+    })
+    .required(),
   stock: number()
           .transform(value => (isNaN(value) ? undefined : value))
             .positive().min(0).max(5000).optional(),
@@ -17,5 +20,10 @@ export const productSquema: SchemaOf<Product> = object({
          .transform(value => (isNaN(value) ? undefined : value))
           .positive().min(100).max(100000).required(),
 
-  description: string().min(12).max(200).required()
-})
+  description: string().min(12).max(200)
+    .transform(function (value) {
+      return this.isType(value) && value !== null ? value.toLowerCase() : value;
+    })
+    .required()
+}
+)
