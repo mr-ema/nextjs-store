@@ -9,6 +9,7 @@ export interface ResponseFuncs {
 // product interface
 export interface IProduct {
   _id?: string
+  imgUrl: string,
   name: string,
   price: number,
   stock?: number,

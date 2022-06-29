@@ -5,6 +5,7 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { useCartContext } from '../../context/cart'
 import { Spinner } from '../../components'
+import coffee from '../../../public/images/coffee.jpg'
 
 const fetcher = ( url: string ) => axios.get(url).then(res => res.data)
 
@@ -37,14 +38,17 @@ export default function ShowProduct() {
             <div>Stock: <span>{data.stock ? data.stock : 'Sin Stock'}</span></div>
           </InfoList>
           <button onClick={() => {
-            saveItem({ _id: data._id, name: data.name, price: data.price, quantity: 1, total: data.price })
+            saveItem({ _id: data._id, imgUrl: data.imgUrl, name: data.name, price: data.price, quantity: 1, total: data.price })
             router.push('/pay')}}>Shop Now</button>
         </ProductInfo>
         <ProductImage>
           <Image 
-            src='/images/coffee.jpg'
+            src={data.imgUrl || coffee}
+            blurDataURL={data.imgUrl}
+            placeholder='blur'
             width={400}
             height={400}
+            objectFit='cover'
           />
         </ProductImage>
       </ProductBox>

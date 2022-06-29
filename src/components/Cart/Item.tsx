@@ -2,16 +2,18 @@ import styled from 'styled-components'
 import { AiFillPlusSquare, AiFillMinusSquare } from 'react-icons/ai'
 import Image from 'next/image'
 import { useCartContext } from '../../context/cart'
+import coffee from '../../../public/images/coffee.jpg'
 
 interface IProps {
   _id: string,
+  imgUrl: string,
   name: string,
   price: number,
   quantity: number,
   total: number
 }
 
-export default function Item({ _id, name, price, quantity, total }: IProps) {
+export default function Item({ _id, imgUrl, name, price, quantity, total }: IProps) {
   const { updateQuantity } = useCartContext()
   // format price and total to local currency
   const formatedTotal: string = new Intl.NumberFormat('es-CL', { style: 'currency', currency: 'CLP' }).format(total)
@@ -24,7 +26,8 @@ export default function Item({ _id, name, price, quantity, total }: IProps) {
           <Image 
             className='img'
             alt='coffe'
-            src='/images/coffee.jpg'
+            src={imgUrl || coffee}
+            blurDataURL={imgUrl}
             layout='fill'
             width={100}
             height={100}

@@ -5,21 +5,18 @@ import styled from 'styled-components'
 import { validateProduct } from '../../components/Forms/validation/product'
 
 interface IProduct {
+  imgUrl: string,
   name: string,
   price: string,
   description: string
 }
 
-// Define props
-interface CreateProps {
-  url: string
-}
-
-export default function Create(props: CreateProps) {
+export default function Create() {
   // manage state of inputs
   const [error, setError] = useState(null)
 
   const [product, setProduct] = useState<IProduct>({
+    imgUrl: '',
     name: '',
     price: '',
     description: ''
@@ -58,6 +55,16 @@ export default function Create(props: CreateProps) {
     <Wrapper>
       <Form onSubmit={handleSubmit} autoComplete='off'>
         <h2>Create New Product</h2>
+        <a href={'https://unsplash.com/'} target='_blank'>Search An Image</a>
+
+          <span className='url'>Use A Custom Image From Unsplash Or Leave It Empty</span>
+        <Box>
+          <input  type='url' name='imgUrl' placeholder='https://images.unsplash.com/...' 
+                  onChange={handleOnChange} maxLength={157} minLength={28}
+                  onBlur={(event) => setError({...error, [event.target.name]: ''})}
+          />  {error && <span>{error.imgUrl}</span>}
+        </Box>
+
         <Box>
           <input  type='text' name='name' placeholder='name of product' 
                   onChange={handleOnChange} maxLength={20} minLength={3}
@@ -99,6 +106,14 @@ const Wrapper = styled.div`
   justify-content: center;
   margin-bottom: 2rem;
   min-height: 80vh;
+
+  .url {
+      position: relative;
+      margin-bottom: .3rem;
+      color: #00cc52;
+      font-weight: 800;
+      font-size: 1rem;
+    }
 `
 
 const Form = styled.form`
@@ -130,6 +145,20 @@ const Form = styled.form`
 
     @media screen and ( max-width: 600px ) {
       font-size: 1rem;
+    }
+  }
+
+  a {
+    color: #d0a845;
+    font-weight: 800;
+    text-decoration: none;
+
+    @media screen and ( max-width: 600px ) {
+      font-size: .8rem;
+    }
+
+    &:hover {
+      text-decoration: underline;
     }
   }
 

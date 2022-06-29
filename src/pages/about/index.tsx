@@ -34,10 +34,7 @@ export default function About() {
         <Container>
           <h2>Info</h2>
           <span className='note'>
-            - Soon I will add to create new product a product with custom picture.
-          </span>
-          <span className='note'>
-          - And validation between stock and items on the cart.
+          - Soon I will add validation between stock and items on the cart.
           </span>
         </Container>
         <Container>

@@ -3,6 +3,7 @@ import useLocalStorage from '../hooks/useLocalStorage'
 
 export interface ICartItem{
   _id: string,
+  imgUrl: string,
   name: string,
   price: number,
   quantity: number,
@@ -31,6 +32,7 @@ export function CartContextProvider({ children }: Props){
 const saveItem = (item: ICartItem) => {
   const newItem = {
     _id: item._id, // use unique _id provided by mongoose
+    imgUrl: item.imgUrl,
     name: item.name,
     price: item.price,
     quantity: item.quantity,

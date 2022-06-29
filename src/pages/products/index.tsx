@@ -29,10 +29,11 @@ export default function Index() {
     <Wrapper>
       <Box>
         <Products>
-          {data.map( (product: IProduct) => (
+          {data.map( (product: IProduct, idx: number) => (
           <Card 
-            key={product._id}
+            key={idx}
             _id={product._id}
+            img={product.imgUrl}
             name={product.name} 
             price={product.price}
             remove={true}

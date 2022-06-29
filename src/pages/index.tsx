@@ -6,8 +6,10 @@ import styled from 'styled-components'
 import { Card, Spinner } from '../components'
 import { IProduct } from '../types/types'
 import banner from '../../public/images/banner.jpg'
+import logo from '../../public/logo.png'
 import { connectDB } from '../middleware/mongodb'
 import { Product } from '../models/product'
+import coffee from '../../public/images/coffee.jpg'
 
 
 interface IProps {
@@ -44,7 +46,7 @@ export default function Home(props: IProps) {
         <meta name='description' content='This is a demo ecommerce site made with NextJs framework'/>
         <meta name='keywords' content='Github,Next,Nextjs,Ecommerce,Coffe,React,Webpay,Mongodb'/>
         <meta name='robots' content='index, nofollow'/>
-        <meta http-equiv='Content-Type' content='text/html; charset=utf-8'/>
+        <meta httpEquiv='Content-Type' content='text/html; charset=utf-8'/>
         <meta name='language' content='English'/>
       </Head>
       <Wrapper>
@@ -55,7 +57,6 @@ export default function Home(props: IProps) {
               src={banner}
               layout='fill'
               objectFit='cover'
-              quality={100}
               priority={true}
             />
           </Banner>
@@ -63,11 +64,9 @@ export default function Home(props: IProps) {
             <ImageBox>
               <Image 
                 alt='logo'
-                src='/logo.png'
+                src={logo}
                 layout='fill'
                 objectFit='cover'
-                quality={100}
-                priority={true}
               />
             </ImageBox>
             <h1>Best Coffee</h1>
@@ -86,8 +85,10 @@ export default function Home(props: IProps) {
               </div>
               <div>
               <Image 
-                alt='item'
-                src={'/images/coffee.jpg'}
+                alt={data[ramdom].name}
+                src={data[ramdom].imgUrl || coffee}
+                blurDataURL={data[ramdom].imgUrl}
+                placeholder='blur'
                 width={300}
                 height={300}
                 objectFit={'cover'}
@@ -96,15 +97,16 @@ export default function Home(props: IProps) {
             </BannerItem>
           </Info>
         </Box>
-
+        
         <Box>
           <Products>
-            {data.map( (product: IProduct) => (
-            <Card 
-              key={product._id}
+            {data.map( (product: IProduct, idx: number) => (
+            <Card
+              key={idx}
               _id={product._id}
               name={product.name} 
               price={product.price}
+              img={product.imgUrl}
             />) )}
           </Products>
         </Box>

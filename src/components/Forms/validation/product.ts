@@ -1,4 +1,5 @@
 interface IProduct {
+  imgUrl: string,
   name: string,
   price: string,
   description: string
@@ -8,6 +9,14 @@ interface Erros extends Partial<IProduct> {}
 
 export const validateProduct = (values: IProduct) => {
   const errors: Erros = {}
+
+  if (values.imgUrl.length > 1)  {
+    if(!/^(https:\/\/images.unsplash.com\/photo){1}\b[a-zA-Z0-9-?=\.&]+/i.test(values.imgUrl) )  {
+      errors.imgUrl = 'Invalid URL'
+    } else if (values.imgUrl.length <= 156)  {
+      errors.imgUrl = 'Must be 157 lenght'
+    }
+  }
 
   if (!values.name) {
     errors.name = 'Required'

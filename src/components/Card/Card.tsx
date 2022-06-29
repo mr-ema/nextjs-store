@@ -5,15 +5,17 @@ import axios from 'axios'
 import styled from 'styled-components'
 import { useCartContext } from '../../context/cart'
 import { FiLoader, FiTrash } from 'react-icons/fi'
+import coffee from '../../../public/images/coffee.jpg'
 
 interface IProps {
   _id: string,
+  img: string,
   name: string,
   price: number,
   remove?: boolean
 }
 
-export default function Card({ name, price, _id, remove = false }: IProps, ) {
+export default function Card({ img, name, price, _id, remove = false }: IProps, ) {
   const { saveItem } = useCartContext()
   const [disabled, setDisabled] = useState<boolean>(false)
   // format price to local currency
@@ -35,14 +37,16 @@ export default function Card({ name, price, _id, remove = false }: IProps, ) {
 
   return (
     <Wrapper>
+      <ProductImg>
       <Link href={`/products/${encodeURIComponent(_id)}`}>
         <a></a>
       </Link>
-      <ProductImg>
       <Image 
-        src='/images/coffee.jpg'
+        src={img || coffee}
+        blurDataURL={img}
         width={250}
         height={300}
+        placeholder='blur'
         objectFit='cover'
       />
       </ProductImg>
@@ -50,7 +54,7 @@ export default function Card({ name, price, _id, remove = false }: IProps, ) {
       <ProductInfo>
         <Name>{name}</Name>
         <Cost>{formatedPrice}</Cost>
-        <AddBtn onClick={() => saveItem({ _id: _id, name: name, price: price, quantity: 1, total: price })}>+</AddBtn>
+        <AddBtn onClick={() => saveItem({ _id: _id, imgUrl: img ,name: name, price: price, quantity: 1, total: price })}>+</AddBtn>
         
         {remove && 
         <RemoveBtn disabled={disabled} onClick={handleDelete}>
@@ -67,11 +71,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   background: #2b2b2b90;
   border-radius: .39rem;
-  cursor: pointer;
   position: relative;
   
   width: 250px;
-  height: 300px;
+  height: 400px;
 
   &:hover {
     transform: scale(1.03);
@@ -79,6 +82,7 @@ const Wrapper = styled.div`
 
   a {
     background: none;
+    cursor: pointer;
     position: absolute;
     top: 0;
     left: 0;
@@ -87,7 +91,7 @@ const Wrapper = styled.div`
     z-index: 1;
   }
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 900px) {
     width: 150px;
     height: 230px;
   }
@@ -96,8 +100,13 @@ const Wrapper = styled.div`
 const ProductImg = styled.div`
   border-radius: .39rem .39rem 0 0;
   display: flex;
-  height: 60%;
+  position: relative;
+  height: 75%;
   width: 100%;
+
+  @media screen and (max-width: 900px){
+    height: 60%;
+  }
 
   img {
     border-radius: .39rem .39rem 0 0;
@@ -109,6 +118,7 @@ const ProductInfo = styled.div`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   padding: 1rem;
+  text-transform: capitalize;
   height: 40%;
 
   @media screen and ( max-width: 600px ){
