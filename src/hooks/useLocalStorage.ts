@@ -6,7 +6,14 @@ export default function useLocalStorage<Type>(key: string, fallbackState: Type):
   useEffect(() => {
     // check if window exits (client-side)
     if (typeof window !== 'undefined') {
-      setValue( JSON.parse( localStorage.getItem(key) ) ?? fallbackState )
+      try {
+        const value = JSON.parse( localStorage.getItem(key) ) ?? fallbackState
+        if(typeof value !== 'undefined')  setValue( value )
+
+      }catch(err) {
+        alert('Nice Try')
+        setValue( fallbackState )
+      }
     }
   }, [])
 

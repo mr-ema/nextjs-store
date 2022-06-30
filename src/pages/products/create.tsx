@@ -108,11 +108,14 @@ const Wrapper = styled.div`
   min-height: 80vh;
 
   .url {
-      position: relative;
-      margin-top: .3rem;
-      color: #ccc500;
+      background-color: #273b4e;
+      border-radius: .3rem;
+      color: #f5f5f5;
       font-weight: 800;
       font-size: 1rem;
+      margin-top: .3rem;
+      position: relative;
+      padding: .6rem;
       text-align: center;
 
     @media screen and ( max-width: 900px ) {
@@ -157,7 +160,7 @@ const Form = styled.form`
   }
 
   a {
-    color: #45bed0;
+    color: #5ea62e;
     font-weight: 800;
     text-decoration: none;
 

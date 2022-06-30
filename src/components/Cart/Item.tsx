@@ -25,7 +25,7 @@ export default function Item({ _id, imgUrl, name, price, quantity, total }: IPro
         <ImageBox>
           <Image 
             className='img'
-            alt='coffe'
+            alt={name}
             src={imgUrl || coffee}
             blurDataURL={imgUrl}
             layout='fill'
@@ -34,7 +34,6 @@ export default function Item({ _id, imgUrl, name, price, quantity, total }: IPro
             objectFit='cover'
           />
         </ImageBox>
-        <span>{name}</span>
       </Box>
       
       <Quantity>
