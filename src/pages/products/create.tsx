@@ -57,7 +57,7 @@ export default function Create() {
         <h2>Create New Product</h2>
         <a href={'https://unsplash.com/'} target='_blank'>Search An Image</a>
 
-          <span className='url'>Use A Custom Image From Unsplash Or Leave It Empty</span>
+          <span className='url'>Use A Custom URL From Unsplash Or Leave It Empty</span>
         <Box>
           <input  type='url' name='imgUrl' placeholder='https://images.unsplash.com/...' 
                   onChange={handleOnChange} maxLength={157} minLength={28}
@@ -109,10 +109,18 @@ const Wrapper = styled.div`
 
   .url {
       position: relative;
-      margin-bottom: .3rem;
-      color: #00cc52;
+      margin-top: .3rem;
+      color: #ccc500;
       font-weight: 800;
       font-size: 1rem;
+      text-align: center;
+
+    @media screen and ( max-width: 900px ) {
+      font-size: .8rem;
+    }
+    @media screen and ( max-width: 600px ) {
+      font-size: .6rem;
+    }
     }
 `
 
@@ -149,7 +157,7 @@ const Form = styled.form`
   }
 
   a {
-    color: #d0a845;
+    color: #45bed0;
     font-weight: 800;
     text-decoration: none;
 

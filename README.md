@@ -3,8 +3,10 @@
 - This is a basic ecommerce site made in nextjs using webpay, mongoose and yum.
 
 ## Important
-- You need to provide a mongodb URI in '.env | .env.local' with the name DATABASE_URL.
-- Also you should use encryption in the localstorage for extra security.
+- You must add a .env or .env.local file with `DATABASE_URL`.
+- I save the cart on local storage, but for extra security it should be encrypt.
+- Or you can use cookies.
+- Or a serverside cart with an encrypt token.
 
 ## To Test Pay Method Use:
 - Credit Cart: 4051885600446623

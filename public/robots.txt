@@ -1,0 +1,12 @@
+# Allow all crawlers
+User-Agent:*
+Allow: /
+Allow: /about
+
+# Block all crawlers
+Disallow: /orders/
+Disallow: /cart/
+Disallow: /pay/
+Disallow: /status/
+Disallow: /products/create/
+Disallow: /products/

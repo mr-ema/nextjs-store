@@ -1,54 +1,64 @@
-import Link from 'next/link'
+import Head from 'next/head'
 import styled from 'styled-components'
 
 export default function About() {
   return (
-    <Wrapper>
-      <Box>
-        <Container>
-          <h2>About This Site</h2>
-          <span>This is My first e-commerce site, and first project on <b>NextJs </b> </span>
-          <span>Is made with :</span>
-          <ol>
-            <li>Nextjs framework.</li>
-            <li>Basic Swr</li>
-            <li>MongoDB as database.</li>
-            <li>WebPay as pay method.</li>
-          </ol>
-        </Container>
+    <>
+     <Head>
+        <meta name='title' content='NextJs Coffe Store' />
+        <meta name='description' content='This is a demo ecommerce site made with NextJs framework'/>
+        <meta name='keywords' content='Github,Next,Nextjs,Ecommerce,Coffe,React,Webpay,Mongodb'/>
+        <meta name='robots' content='index, nofollow'/>
+        <meta httpEquiv='Content-Type' content='text/html; charset=utf-8'/>
+        <meta name='language' content='English'/>
+      </Head>
+      <Wrapper>
+        <Box>
+          <Container>
+            <h2>About This Site</h2>
+            <span>This is My first e-commerce site, and first project on <b>NextJs </b> </span>
+            <span>Is made with :</span>
+            <ol>
+              <li>Nextjs framework.</li>
+              <li>Basic Swr</li>
+              <li>MongoDB as database.</li>
+              <li>WebPay as pay method.</li>
+            </ol>
+          </Container>
 
-        <Container>
-          <h2>To Test Pay Method use:</h2>
-          <span><b>Credit Cart: </b>4051885600446623</span>
-          <span><b>Rut: </b>11.111.111-1</span>
-          <span><b>Password: </b>123</span>
-        </Container>
-        
+          <Container>
+            <h2>To Test Pay Method use:</h2>
+            <span><b>Credit Cart: </b>4051885600446623</span>
+            <span><b>Rut: </b>11.111.111-1</span>
+            <span><b>Password: </b>123</span>
+          </Container>
+          
 
-        <Link href='https://github.com/mr-ema' target='_blank'>
-          <a>My GitHub →</a>
-        </Link>
-      </Box>
+          <a href='https://github.com/mr-ema' target='_blank'>
+            My GitHub →
+          </a>
+        </Box>
 
-      <Box>
-        <Container>
-          <h2>Info</h2>
-          <span className='note'>
-          - Soon I will add validation between stock and items on the cart.
-          </span>
-        </Container>
-        <Container>
-          <h2>What can this site do</h2>
-          <span>This site can :</span>
-          <ol>
-            <li>Create a new product and save it to a database.</li>
-            <li>Save an order on database and delete those that has an Pending state and have more than 2 days with a button ( probably 5min for demostration purposes ).</li>
-            <li>Once pay update order status to Pagado.</li>
-            <li>Add, Remove And Increase Products In The Cart.</li>
-          </ol>
-        </Container>
-      </Box>
-    </Wrapper>
+        <Box>
+          <Container>
+            <h2>Info</h2>
+            <span className='note'>
+            - Soon I will add validation between stock and items on the cart.
+            </span>
+          </Container>
+          <Container>
+            <h2>What can this site do</h2>
+            <span>This site can :</span>
+            <ol>
+              <li>Create a new product and save it to a database.</li>
+              <li>Save and delete orders on database.</li>
+              <li>Once pay update order status to Pagado.</li>
+              <li>Add, Remove And Increase Products In The Cart.</li>
+            </ol>
+          </Container>
+        </Box>
+      </Wrapper>
+    </>
   )
 }
 
