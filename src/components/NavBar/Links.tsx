@@ -47,12 +47,12 @@ const Menu = styled.ul`
     color: inherit;
     display: block;
     font-weight: 600;
-    padding: .6rem;
+    padding: .3rem;
     text-decoration: none;
     text-transform: capitalize;
 
-    @media screen and ( max-width: 600px ) {
-      font-size: .8rem;
+    @media screen and ( max-width: 900px ) {
+      font-size: .69rem;
     }
   
     &:hover {

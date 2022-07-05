@@ -74,7 +74,7 @@ const Wrapper = styled.div`
   position: relative;
   
   width: 250px;
-  height: 400px;
+  height: 350px;
 
   &:hover {
     transform: scale(1.03);
@@ -101,12 +101,8 @@ const ProductImg = styled.div`
   border-radius: .39rem .39rem 0 0;
   display: flex;
   position: relative;
-  height: 75%;
+  height: 65%;
   width: 100%;
-
-  @media screen and (max-width: 900px){
-    height: 60%;
-  }
 
   img {
     border-radius: .39rem .39rem 0 0;
@@ -121,8 +117,8 @@ const ProductInfo = styled.div`
   text-transform: capitalize;
   height: 40%;
 
-  @media screen and ( max-width: 600px ){
-    font-size: .8rem;
+  @media screen and ( max-width: 900px ){
+    font-size: .69rem;
   }
 `
 

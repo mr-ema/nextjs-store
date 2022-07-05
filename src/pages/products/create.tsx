@@ -119,11 +119,9 @@ const Wrapper = styled.div`
       text-align: center;
 
     @media screen and ( max-width: 900px ) {
-      font-size: .8rem;
-    }
-    @media screen and ( max-width: 600px ) {
       font-size: .6rem;
     }
+
     }
 `
 
@@ -140,10 +138,11 @@ const Form = styled.form`
   height: auto;
 
   @media screen and (max-width: 1200px){
-   width : 80%;
+    width : 80%;
   }
 
-  @media screen and ( max-width: 600px ) {
+  @media screen and ( max-width: 900px ) {
+      width: 100%;
       gap: 1rem;
   }
   
@@ -154,7 +153,7 @@ const Form = styled.form`
     letter-spacing: 1px;
     margin-bottom: 2rem;
 
-    @media screen and ( max-width: 600px ) {
+    @media screen and ( max-width: 900px ) {
       font-size: 1rem;
     }
   }
@@ -164,8 +163,8 @@ const Form = styled.form`
     font-weight: 800;
     text-decoration: none;
 
-    @media screen and ( max-width: 600px ) {
-      font-size: .8rem;
+    @media screen and ( max-width: 900px ) {
+      font-size: .7rem;
     }
 
     &:hover {
@@ -186,8 +185,8 @@ const Form = styled.form`
       opacity: 1;
     }
 
-    @media screen and ( max-width: 600px ) {
-      font-size: 0.8rem;
+    @media screen and ( max-width: 900px ) {
+      font-size: 0.7rem;
     }
   }
 `
@@ -208,7 +207,7 @@ const Box = styled.div`
     bottom: 0;
     left: .6rem;
 
-    @media screen and ( max-width: 600px ) {
+    @media screen and ( max-width: 900px ) {
       font-size: .6rem;
     }
   }
@@ -228,8 +227,8 @@ const Box = styled.div`
       font-weight: 700;
     }
 
-    @media screen and ( max-width: 600px ) {
-      font-size: 0.8rem;
+    @media screen and ( max-width: 900px ) {
+      font-size: 0.7rem;
     }
   }
 `

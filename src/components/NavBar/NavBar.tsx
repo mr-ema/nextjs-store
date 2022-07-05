@@ -19,12 +19,11 @@ export default function NavBar() {
         <Logo>
           <Image 
             onClick={() => router.push('/')}
-            src='/logo.png'
+            src='/images/coffee-logo.png'
             quality={100}
             width={100}
             height={100}
-            priority={true}
-            objectFit='cover'
+            objectFit='contain'
           />
         </Logo>
 
@@ -74,7 +73,7 @@ const ShopCart = styled.a`
 const Box = styled.div`
   display: grid;
   grid-template-columns: repeat(6, 1fr);
-  margin-top: 1rem;
+  margin-top: .3rem;
 
   width: 100%;
   height: auto;
@@ -120,17 +119,11 @@ const Logo = styled.div`
   position: relative;
   margin-top: -20px;
 
-  width: 80px;
-  height: 80px;
+  max-width: 90px;
+  height: auto;
 
-  @media screen and ( max-width: 1200px ) {
-    width: 60px;
-    height: 60px;
-    margin-top: 0;
-  }
-  @media screen and ( max-width: 600px ) {
-    width: 40px;
-    height: 40px;
-    margin-top: 0;
+  @media screen and ( max-width: 900px ) {
+    width: 50px;
+    margin-top: -10px;
   }
 `

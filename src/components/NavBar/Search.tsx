@@ -66,7 +66,7 @@ const SearchBox = styled.div`
   position: relative;
 
   width: 70%;
-  height: 60px;
+  height: 46px;
 
   @media screen and (max-width: 900px) {
     width: 80%;
@@ -83,13 +83,13 @@ const SearchBar = styled.input`
   text-transform: capitalize;
 
   width: 80%;
-  height: 60px;
+  height: 46px;
 
   &:focus {
     border-left: 3px solid #758fff;
   }
 
-  @media screen and ( max-width: 600px ) {
+  @media screen and ( max-width: 900px ) {
       font-size: .8rem;
       height: 30px;
   }
@@ -108,14 +108,14 @@ const Results = styled.div<{$visibility: string}>`
   overflow-y: scroll;
   visibility: ${props => props.$visibility};
   text-transform: capitalize;
-  top: 60px;
+  top: 46px;
   left: 0;
 
   width: 80%;
   max-height: 300px;
   z-index: 2;
 
-  @media screen and ( max-width: 600px ) {
+  @media screen and ( max-width: 900px ) {
       font-size: .8rem;
       top: 30px;
   }
@@ -129,7 +129,7 @@ const Results = styled.div<{$visibility: string}>`
     text-decoration: none;
     width: 100%;
 
-    @media screen and ( max-width: 600px ) {
+    @media screen and ( max-width: 900px ) {
       font-size: .8rem;
     }
 
