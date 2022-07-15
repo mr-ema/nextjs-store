@@ -1,6 +1,5 @@
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import Image from 'next/image'
 import styled from 'styled-components'
 import { FaShoppingCart } from 'react-icons/fa'
 import { useCartContext } from '../../context/cart'
@@ -9,24 +8,11 @@ import Links from './Links'
 
 export default function NavBar() {
   const { items } = useCartContext()
-  const router = useRouter();
 
   return (
     <Wrapper>
       <nav>
         <Box>
-
-        <Logo>
-          <Image 
-            onClick={() => router.push('/')}
-            src='/images/coffee-logo.png'
-            quality={100}
-            width={100}
-            height={100}
-            objectFit='contain'
-          />
-        </Logo>
-
           <Search />
         </Box>
     
@@ -111,19 +97,4 @@ const CartItems = styled.span`
       width: 10px;
       height: 10px;
     }
-`
-const Logo = styled.div`
-  grid-column: 1;
-  cursor: pointer;
-  display: block;
-  position: relative;
-  margin-top: -20px;
-
-  max-width: 90px;
-  height: auto;
-
-  @media screen and ( max-width: 900px ) {
-    width: 50px;
-    margin-top: -10px;
-  }
 `
