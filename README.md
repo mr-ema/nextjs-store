@@ -3,6 +3,7 @@
 - This is a basic ecommerce site made in nextjs using webpay, mongoose and yum.
 
 ## Important
+- I made this just to practice my code so don't use it in production. 
 - You must add a .env or .env.local file with `DATABASE_URL`.
 - I save the cart on local storage, but for extra security it should be encrypt.
 - Or you can use cookies.
